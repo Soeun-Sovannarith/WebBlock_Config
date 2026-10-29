@@ -1,0 +1,29 @@
+# Externalized configuration for provisioning-service (FastAPI)
+app:
+  name: Site Provisioning Service
+  service-name: provisioning-service
+
+server:
+  port: ${SERVER_PORT:8084}
+
+database:
+  url: ${DATABASE_URL:postgresql+psycopg://webblock:webblock@localhost:5434/provisioning_db}
+
+rabbitmq:
+  host: ${RABBITMQ_HOST:localhost}
+  port: ${RABBITMQ_PORT:5672}
+  username: ${RABBITMQ_USERNAME:webblock}
+  password: ${RABBITMQ_PASSWORD:webblock}
+  run-consumer: ${RUN_CONSUMER:true}
+
+keycloak:
+  issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8180/realms/webblock}
+  jwk-set-uri: ${KEYCLOAK_JWK_SET_URI:http://localhost:8180/realms/webblock/protocol/openid-connect/certs}
+
+clients:
+  project-service:
+    url: ${PROJECT_SERVICE_URL:http://localhost:8082}
+    timeout-seconds: ${REQUEST_TIMEOUT_SECONDS:5.0}
+
+hosting:
+  site-url-template: ${SITE_URL_TEMPLATE:https://{subdomain}.webblock.app}

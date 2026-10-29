@@ -1,0 +1,20 @@
+# Externalized configuration for project-service
+spring:
+  application:
+    name: project-service
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5434/project_db}
+    username: ${DB_USERNAME:webblock}
+    password: ${DB_PASSWORD:webblock}
+
+  # Synchronous calls to other services (Spring HTTP service clients, see config/HttpClientConfig).
+  # In Kubernetes the URL is the Service DNS name, e.g. http://user-service:8080 — Istio handles mTLS, retries and timeouts.
+  http:
+    serviceclient:
+      user-service:
+        base-url: ${USER_SERVICE_URL:http://localhost:8081}
+        read-timeout: 5s
+
+server:
+  port: ${SERVER_PORT:8082}

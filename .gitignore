@@ -1,0 +1,14 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Real environment-specific values and secrets must never be committed.
+# Keep only local-dev defaults in this repo; inject real values via env vars / Kubernetes Secrets.
+.env
+*.local.yaml
+*.local.env
+*-secret*.yaml
+*.secret.env

@@ -1,0 +1,12 @@
+# Externalized configuration for notification-service
+spring:
+  application:
+    name: notification-service
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5434/notification_db}
+    username: ${DB_USERNAME:webblock}
+    password: ${DB_PASSWORD:webblock}
+
+server:
+  port: ${SERVER_PORT:8086}

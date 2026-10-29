@@ -1,0 +1,26 @@
+# Externalized configuration for aicode-service (FastAPI)
+app:
+  name: AI Code Service
+  service-name: aicode-service
+
+server:
+  port: ${SERVER_PORT:8083}
+
+database:
+  url: ${DATABASE_URL:postgresql+psycopg://webblock:webblock@localhost:5434/aicode_db}
+
+rabbitmq:
+  host: ${RABBITMQ_HOST:localhost}
+  port: ${RABBITMQ_PORT:5672}
+  username: ${RABBITMQ_USERNAME:webblock}
+  password: ${RABBITMQ_PASSWORD:webblock}
+  run-consumer: ${RUN_CONSUMER:true}
+
+keycloak:
+  issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8180/realms/webblock}
+  jwk-set-uri: ${KEYCLOAK_JWK_SET_URI:http://localhost:8180/realms/webblock/protocol/openid-connect/certs}
+
+clients:
+  project-service:
+    url: ${PROJECT_SERVICE_URL:http://localhost:8082}
+    timeout-seconds: ${REQUEST_TIMEOUT_SECONDS:5.0}
